@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
         body: Center(
           child: ArnaButton.text(
             label: 'Click Me!',
-            onPressed: () => prettyLogger(
-              title: 'Pretty Logger',
+            onPressed: () => arnaLogger(
+              title: 'Arna Logger',
               data: 'Hello World',
             ),
           ),

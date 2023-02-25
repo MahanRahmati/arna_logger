@@ -3,7 +3,7 @@ library arna_logger;
 import 'package:flutter/foundation.dart' show debugPrint;
 
 extension ArnaLogger on Object {
-  void prettyLogger({String? title}) {
+  void arnaLogger({String? title}) {
     _printTop();
     _printtitle(title);
     _printData(toString());
@@ -11,7 +11,7 @@ extension ArnaLogger on Object {
   }
 }
 
-void prettyLogger({String? title, required dynamic data}) {
+void arnaLogger({String? title, required dynamic data}) {
   _printTop();
   _printtitle(title);
   _printData(data.toString());
