@@ -1,5 +1,6 @@
 name: arna_logger
 description: A pretty logger for your applications.
+homepage: https://github.com/MahanRahmati/arna_logger
 version: 1.0.0
 
 environment:

@@ -1,3 +1,11 @@
+<p align="center">
+  <a href="https://pub.dartlang.org/packages/arna_logger"><img src="https://img.shields.io/pub/v/arna_logger.svg" alt="pub.dev"></a>
+  <a href="https://github.com/MahanRahmati/"><img src="https://img.shields.io/badge/Maintainer-MahanRahmati-informational"></a>
+  <a href="https://github.com/MahanRahmati/Arna/actions/workflows/pana_analysis.yml"><img src="https://github.com/MahanRahmati/Arna/actions/workflows/pana_analysis.yml/badge.svg"></a>
+  <a href="https://github.com/MahanRahmati/Arna/actions/workflows/flutter_analysis.yml"><img src="https://github.com/MahanRahmati/Arna/actions/workflows/flutter_analysis.yml/badge.svg"></a>
+  <img src="https://img.shields.io/github/license/MahanRahmati/arna_logger">
+</p>
+
 ## Introduction
 
 A pretty logger for your applications.
