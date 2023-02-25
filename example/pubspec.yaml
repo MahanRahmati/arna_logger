@@ -1,0 +1,24 @@
+name: example
+description: Showcase Arna logger.
+publish_to: 'none'
+
+version: 1.0.0
+
+environment:
+  sdk: '>=2.19.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  arna_logger:
+    path: ../
+  arna:
+    git: https://github.com/MahanRahmati/Arna.git
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+
+flutter:
+  uses-material-design: true
