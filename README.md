@@ -25,7 +25,7 @@ And import it
 import 'package:arna_logger/arna_logger.dart';
 ```
 
-use it!
+Use it!
 
 ```dart
 arnaLogger(title: 'Arna Logger', data: 'Hello World');
