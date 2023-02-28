@@ -1,3 +1,8 @@
+## 1.0.4
+
+- Update Docs
+- Add arnaJsonLogger
+
 ## 1.0.3
 
 - Update README
