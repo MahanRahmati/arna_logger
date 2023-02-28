@@ -12,12 +12,24 @@ class MyApp extends StatelessWidget {
       home: ArnaScaffold(
         headerBar: ArnaHeaderBar(title: 'Arna Logger Demo'),
         body: Center(
-          child: ArnaButton.text(
-            label: 'Click Me!',
-            onPressed: () => arnaLogger(
-              title: 'Arna Logger',
-              data: 'Hello World',
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ArnaButton.text(
+                label: 'Arna Logger',
+                onPressed: () => arnaLogger(
+                  title: 'Arna Logger',
+                  data: 'Hello World',
+                ),
+              ),
+              ArnaButton.text(
+                label: 'Arna Json Logger',
+                onPressed: () => arnaJsonLogger(
+                  title: 'Arna Json Logger',
+                  data: {'text': 'foo', 'value': '2'},
+                ),
+              ),
+            ],
           ),
         ),
       ),
