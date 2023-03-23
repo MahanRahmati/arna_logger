@@ -7,8 +7,25 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart' show debugPrint;
 
+// Dividers
+const String _topLeft = '┌';
+const String _topRight = '┐';
+const String _centerLeft = '├';
+const String _centerRight = '┤';
+const String _bottomLeft = '└';
+const String _bottomRight = '┘';
+const String _verticalDivider = '│';
+const String _horizontalDivider = '─';
+
+const int _defaultWidth = 80;
+const int _defaultFlutterTextWidth = 9; // "flutter: "
+const int _edges = 2;
+const int _paddingLeftRight = 1;
+const int _width = _defaultWidth - _defaultFlutterTextWidth - _edges;
+const int _messageWidth =
+    _defaultWidth - _defaultFlutterTextWidth - _edges - (2 * _paddingLeftRight);
+
 /// A small function to log your datas.
-///
 ///
 /// ```dart
 ///   arnaLogger(title: 'Arna Logger', data: 'Hello World');
@@ -18,18 +35,9 @@ import 'package:flutter/foundation.dart' show debugPrint;
 ///   │ Hello World                                                         │
 ///   └─────────────────────────────────────────────────────────────────────┘
 /// ```
-void arnaLogger({final String? title, required final dynamic data}) {
-  _printTop();
-  _printtitle(title);
-  _printData(data.toString());
-  _printBottom();
-}
-
-/// A small function to log your Jsons.
-///
 ///
 /// ```dart
-///   arnaJsonLogger(
+///   arnaLogger(
 ///     title: 'Arna Json Logger',
 ///     data: {'text': 'foo', 'value': '2'},
 ///   );
@@ -42,35 +50,46 @@ void arnaLogger({final String? title, required final dynamic data}) {
 /// │ }                                                                   │
 /// └─────────────────────────────────────────────────────────────────────┘
 /// ```
-void arnaJsonLogger({
-  final String? title,
-  required final Map<String, dynamic> data,
-}) {
-  _printTop();
-  _printtitle(title);
-  final List<String> listString = _prettyJson(data).split('\n');
-  listString.forEach(_printData);
-  _printBottom();
-}
-
-String _getDivider() {
-  String divider = '';
-  for (int i = 0; i < 69; i++) {
-    divider = '$divider─';
-  }
-  return divider;
-}
-
-void _printTop() {
-  debugPrint('┌${_getDivider()}┐');
-}
-
-void _printtitle(final String? title) {
+void arnaLogger({final String? title, required final dynamic data}) {
+  _printTopDivider();
   if (title != null) {
-    final List<String> titleList = _lineBreak(title);
-    _printLine(titleList);
-    debugPrint('├${_getDivider()}┤');
+    _printTitle(title);
   }
+  if (data is Map<String, dynamic>) {
+    _printJson(data);
+  } else {
+    _printData(data.toString());
+  }
+  _printBottomDivider();
+}
+
+/// Print `──────`.
+String _dividers() => _horizontalDivider * _width;
+
+/// Print `┌────┐`.
+void _printTopDivider() {
+  debugPrint('$_topLeft${_dividers()}$_topRight');
+}
+
+/// Print `├────┤`.
+void _printCenterDivider() {
+  debugPrint('$_centerLeft${_dividers()}$_centerRight');
+}
+
+/// Print `│ message │`.
+void _printMessage(final String message) {
+  debugPrint('$_verticalDivider $message $_verticalDivider');
+}
+
+/// Print `└────┘`.
+void _printBottomDivider() {
+  debugPrint('$_bottomLeft${_dividers()}$_bottomRight');
+}
+
+void _printTitle(final String title) {
+  final List<String> titleList = _lineBreak(title);
+  _printLine(titleList);
+  _printCenterDivider();
 }
 
 String _prettyJson(final Map<String, dynamic> data) {
@@ -78,13 +97,14 @@ String _prettyJson(final Map<String, dynamic> data) {
   return encoder.convert(data);
 }
 
+void _printJson(final Map<String, dynamic> data) {
+  final List<String> listString = _prettyJson(data).split('\n');
+  listString.forEach(_printData);
+}
+
 void _printData(final String data) {
   final List<String> dataList = _lineBreak(data);
   _printLine(dataList);
-}
-
-void _printBottom() {
-  debugPrint('└${_getDivider()}┘');
 }
 
 List<String> _lineBreak(
@@ -92,7 +112,7 @@ List<String> _lineBreak(
   List<String>? lineList,
 }) {
   lineList = lineList ?? <String>[];
-  if (input.length <= 67) {
+  if (input.length <= _messageWidth) {
     lineList.add(input);
     return lineList;
   }
@@ -103,25 +123,20 @@ List<String> _lineBreak(
 }
 
 int _getIndex(final String input) {
-  for (int i = 67; i >= 0; i--) {
+  for (int i = _messageWidth; i > 0; i--) {
     if (input[i] == ' ') {
       return i;
     }
   }
-  return 0;
+
+  return _messageWidth;
 }
 
 void _printLine(final List<String> lines) {
   for (final String line in lines) {
     final String spaces = _getSpaces(line.length);
-    debugPrint('│ $line$spaces │');
+    _printMessage('$line$spaces');
   }
 }
 
-String _getSpaces(final int lineLength) {
-  String spaces = '';
-  for (int i = 0; i < (67 - lineLength); i++) {
-    spaces = '$spaces ';
-  }
-  return spaces;
-}
+String _getSpaces(final int lineLength) => ' ' * (_messageWidth - lineLength);

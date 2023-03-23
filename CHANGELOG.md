@@ -1,3 +1,8 @@
+## 1.0.5
+
+- [BREAKING] Remove arnaJsonLogger
+- Refactor functions
+
 ## 1.0.4
 
 - Update Docs

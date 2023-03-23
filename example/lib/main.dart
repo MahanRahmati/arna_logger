@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
               ),
               ArnaButton.text(
                 label: 'Arna Json Logger',
-                onPressed: () => arnaJsonLogger(
+                onPressed: () => arnaLogger(
                   title: 'Arna Json Logger',
                   data: {'text': 'foo', 'value': '2'},
                 ),

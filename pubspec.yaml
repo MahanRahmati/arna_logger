@@ -1,7 +1,7 @@
 name: arna_logger
 description: Arna Logger is a small and pretty logger for your applications.
 homepage: https://github.com/MahanRahmati/arna_logger
-version: 1.0.4
+version: 1.0.5
 
 environment:
   sdk: '>=2.19.2 <3.0.0'

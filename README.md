@@ -16,7 +16,7 @@ Add Arna Logger as a dependency in your pubspec.yaml:
 
 ```yaml
 dependencies:
-  arna_logger: ^1.0.4
+  arna_logger: ^1.0.5
 ```
 
 Import it:
@@ -38,7 +38,7 @@ arnaLogger(title: 'Arna Logger', data: 'Hello World');
 └─────────────────────────────────────────────────────────────────────┘
 ```
 ```dart
-arnaJsonLogger(
+arnaLogger(
   title: 'Arna Json Logger',
   data: {'text': 'foo', 'value': '2'},
 );
