@@ -1,3 +1,7 @@
+## 1.0.6
+
+- Add check for List
+
 ## 1.0.5
 
 - [BREAKING] Remove arnaJsonLogger

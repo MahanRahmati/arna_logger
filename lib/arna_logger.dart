@@ -57,6 +57,14 @@ void arnaLogger({final String? title, required final dynamic data}) {
   }
   if (data is Map<String, dynamic>) {
     _printJson(data);
+  } else if (data is List<dynamic>) {
+    for (final dynamic item in data) {
+      if (item is Map<String, dynamic>) {
+        _printJson(item);
+      } else {
+        _printData(data.toString());
+      }
+    }
   } else {
     _printData(data.toString());
   }
