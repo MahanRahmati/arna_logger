@@ -5,7 +5,7 @@ library arna_logger;
 
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart' show debugPrint;
+import 'package:flutter/foundation.dart' show debugPrint, kReleaseMode;
 
 // Dividers
 const String _topLeft = '┌';
@@ -50,25 +50,60 @@ const int _messageWidth =
 /// │ }                                                                   │
 /// └─────────────────────────────────────────────────────────────────────┘
 /// ```
-void arnaLogger({final String? title, required final dynamic data}) {
+void arnaLogger({
+  final String? title,
+  required final dynamic data,
+  final bool onlyInDebugMode = true,
+}) {
+  if (onlyInDebugMode) {
+    if (kReleaseMode) {
+      return;
+    }
+  }
   _printTopDivider();
   if (title != null) {
     _printTitle(title);
   }
-  if (data is Map<String, dynamic>) {
+  _typeHandler(data);
+  _printBottomDivider();
+}
+
+void _typeHandler(final dynamic data) {
+  if (data is Map<String, dynamic>?) {
     _printJson(data);
-  } else if (data is List<dynamic>) {
+    return;
+  }
+  if (data is List<Map<String, dynamic>?>) {
+    _printJson(data);
+    return;
+  }
+  if (data is List<dynamic>) {
     for (final dynamic item in data) {
       if (item is Map<String, dynamic>) {
         _printJson(item);
+      } else if (_tryToDecodeJson(item)) {
       } else {
-        _printData(data.toString());
+        _printData(item.toString());
       }
     }
-  } else {
-    _printData(data.toString());
+    return;
   }
-  _printBottomDivider();
+  _printData(data.toString());
+}
+
+bool _tryToDecodeJson(final dynamic data) {
+  try {
+    if (data is String) {
+      final dynamic convertedData = jsonDecode(data);
+      if (convertedData is Map<String, dynamic>) {
+        _printJson(convertedData);
+        return true;
+      }
+    }
+  } catch (e) {
+    return false;
+  }
+  return false;
 }
 
 /// Print `──────`.
@@ -100,12 +135,12 @@ void _printTitle(final String title) {
   _printCenterDivider();
 }
 
-String _prettyJson(final Map<String, dynamic> data) {
+String _prettyJson(final dynamic data) {
   const JsonEncoder encoder = JsonEncoder.withIndent('  ');
   return encoder.convert(data);
 }
 
-void _printJson(final Map<String, dynamic> data) {
+void _printJson(final dynamic data) {
   final List<String> listString = _prettyJson(data).split('\n');
   listString.forEach(_printData);
 }

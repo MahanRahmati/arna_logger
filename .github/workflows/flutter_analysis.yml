@@ -11,7 +11,7 @@ jobs:
       # Setup the flutter environment.
       - uses: subosito/flutter-action@v2
         with:
-          channel: "stable" # 'dev', 'alpha', default to: 'stable'
+          channel: 'stable' # 'dev', 'alpha', default to: 'stable'
           # flutter-version: '1.12.x' # you can also specify exact version of flutter
 
       # Get flutter dependencies.
@@ -24,5 +24,5 @@ jobs:
       - run: flutter analyze .
 
       # Run tests
-      # - name: Run tests
-        # run: flutter test
+      - name: Run tests
+        run: flutter test
