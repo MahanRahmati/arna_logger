@@ -57,7 +57,7 @@ void main() {
     );
   });
 
-  test('Normal List', () {
+  test('List of Map<String,dynamic>', () {
     const String expectText =
         '┌─────────────────────────────────────────────────────────────────────┐\n'
         '│ Arna Logger                                                         │\n'

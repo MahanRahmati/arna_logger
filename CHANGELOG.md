@@ -1,3 +1,8 @@
+## 1.0.7
+
+- Add onlyInDebugMode
+- Add tests
+
 ## 1.0.6
 
 - Add check for List

@@ -16,7 +16,7 @@ Add Arna Logger as a dependency in your pubspec.yaml:
 
 ```yaml
 dependencies:
-  arna_logger: ^1.0.6
+  arna_logger: ^1.0.7
 ```
 
 Import it:
