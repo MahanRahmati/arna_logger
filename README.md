@@ -8,9 +8,9 @@
 
 ## Introduction
 
-A pretty logger for your applications.
+This is a Flutter plugin that provides a pretty logger for your application. It can parse and prettify your logs, making them easier to read and understand.
 
-## Getting Started
+## Installation
 
 Add Arna Logger as a dependency in your pubspec.yaml:
 
@@ -19,13 +19,17 @@ dependencies:
   arna_logger: ^1.0.7
 ```
 
-Import it:
+Then, run flutter pub get to install the package.
+
+## Usage
+
+To use the logger in your application, simply import the package:
 
 ```dart
 import 'package:arna_logger/arna_logger.dart';
 ```
 
-Use it!
+You can then use the logger to print messages to the console:
 
 ```dart
 arnaLogger(title: 'Arna Logger', data: 'Hello World');
@@ -60,3 +64,7 @@ arnaLogger(
 ## License
 
 Arna Logger is [BSD 3-Clause licensed](./LICENSE).
+
+## Contributing
+
+Contributions are welcome! If you find a bug or want to add a new feature, please open an issue or submit a pull request.
