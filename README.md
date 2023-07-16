@@ -16,7 +16,7 @@ Add Arna Logger as a dependency in your pubspec.yaml:
 
 ```yaml
 dependencies:
-  arna_logger: ^1.0.7
+  arna_logger: ^1.1.0
 ```
 
 Then, run flutter pub get to install the package.

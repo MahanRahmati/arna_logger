@@ -1,3 +1,8 @@
+## 1.1.0
+
+- Refactor plugin
+- Add width
+
 ## 1.0.7
 
 - Add onlyInDebugMode

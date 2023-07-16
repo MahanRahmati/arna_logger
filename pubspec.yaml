@@ -1,10 +1,13 @@
 name: arna_logger
 description: Arna Logger is a small and pretty logger for your applications.
 homepage: https://github.com/MahanRahmati/arna_logger
-version: 1.0.7
+version: 1.1.0
+topics:
+  - logger
+  - log
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
+  sdk: '>=2.19.2 <4.0.0'
 
 dependencies:
   flutter:
@@ -13,4 +16,4 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.1
+  flutter_lints: ^2.0.2
